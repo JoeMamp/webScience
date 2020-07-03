@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" sameSite="none">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <title>Lab 5 - The New York Times API</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <!-- <link rel="stylesheet" href="lab5.css"> -->
+   </head>
+   <!-- angular module and controller function will be acceessible over the whole body -->
+   <body ng-app="newsApp" ng-controller="newsController" ng-view>
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Top Stories</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Export Database
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#" ng-click="getJSON()">JSON</a>
+              <a class="dropdown-item" href="#" ng-click="getCSV()">CSV</a>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Display Stories
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a ng-repeat="topic in topics" class="dropdown-item" href="#" ng-click="printNews(topic.name)">{{topic.name}}</a>
+            </div>
+          </div>
+          <div class="searchBar">
+            <form class="form-inline my-2 my-lg-0">
+              <fieldset>
+                <label for="keyW"></label>
+                <input class="form-control mr-sm-2" aria-label="Search" type="text" id="name" name="keyW" ng-model="keyW" placeholder="Build DB with Keyword"/>
+                <!-- when search button is clicked getNews() function fires -->
+                <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Collect" ng-click="getNews()">
+              </fieldset>
+            </form>
+          </div>
+          <div class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search" ng-click="clearDatabase()">Reset Database</div>
+        </div>
+      </nav>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <span class="navbar-text text-center">
+          Search arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, and world</span>
+      </nav>
+      <div class="content">
+         <div class="row">
+            <!-- after api call, all articles are looped through and displayed  -->
+            <div ng-repeat="result in news" class="col-lg-3 col-md-4 col-sm-6 card">
+               <h4 class='text-center'> {{result.title}}</h4>
+                  <!-- <img class="img-thumbnail rounded mx-auto d-block" src="{{article.urlToImage}}"alt="article image"> -->
+               <!-- <p class="text-center">{{article.description}}</p> -->
+               <!-- <p> Source {{article.source.name}}</p> -->
+            </div>
+         </div>
+      </div>
+      <!-- scripts at bottom for better load time -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.js"></script>
+      <script type="text/javascript" src="lab5.js"></script>
+   </body>
+</html>

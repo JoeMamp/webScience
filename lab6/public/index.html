@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" sameSite="none">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Lab 6 - The New York Times API</title>
+    <link rel="stylesheet" href="/Resources/bootstrap.min.css">
+  </head>
+  <body ng-app="newsApp" ng-controller="newsController" ng-view>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Top Stories</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle btn btn-dark mr-1" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Export Me!
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#" ng-click="getJSON()">JSON</a> <!-- Export -->
+            <a class="dropdown-item" href="#" ng-click="getCSV()">CSV</a>   <!-- Export -->
+          </div>
+        </div>
+        <div class="btn btn-dark mr-1 my-2 my-sm-0" type="submit" value="Search" ng-click="printNews()">Display Stories</div>     <!-- Display -->
+        <div class="btn btn-dark mr-1 my-2 my-sm-0" type="submit" value="Search" ng-click="clearDatabase()">Reset Database</div>  <!-- Clear -->
+      </div>
+      <p class="navbar-brand" href="#">Joe's New York Times API Page</p>
+    </nav>
+    <div class="content d-block">
+      <div class="jumbotron w-25 float-left text-center">
+        <h1 class="display-4">Welcome to Top Stories!</h1>
+        <p class="lead">Here you can find the world's foremost news on a variety of popular topics from Arts and Health to Politics and Technology.</p>
+        <p>To set up your news:</p>
+        <p>1. Click the buttons below to select which news you would like to see.</p>
+        <p>(If you want to select more than one category, refresh the page after selecting each one!)</p>
+        <p>2. Click the 'Display Stories' button at the top of the page to see what's going on!</p>
+        <hr class="my-4">
+        <div class="row">
+          <div class="col">
+            <!-- Add -->
+            <button ng-repeat="category in buttons" ng-click="getNews(category.value)" type="button" id="category.value" class="btn btn-primary btn-block" data-toggle="button" aria-pressed="false">{{category.name}}</button> <!-- onclick="call some kinda function" -->
+          </div>
+        </div>
+        <hr class="my-4">
+        <p>To clear the stories, simply refresh the page. To reselect which stories you want to see, click the 'Reset Database' button and choose your new topics!</p>
+        <p>If you want to save the news data, click on the 'Export Me!' button above, and select the type of file you want from the dropdown menu.</p>
+        <img class="img-fluid mx-auto mt-5" src="/Resources/timesLogo.jpg" alt="">
+      </div>
+      <div class="row w-75">
+        <div ng-repeat="result in news" class="col-lg-6 col-md-6 col-sm-6 card" style="margin:2%;margin-left:25%;padding:5%;">
+          <h4 class='text-center'>{{result.title}}</h4>
+          <p class="text-center">{{result.byline}}</p>
+          <p class="text-center">From: <a href="{{result.short_url}}" target="_blank">{{result.short_url}}</a></p>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.js"></script>
+    <script type="text/javascript" src="lab6.js"></script>
+  </body>
+</html>

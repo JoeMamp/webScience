@@ -1,0 +1,7 @@
+body {
+  background-image: url('bimg.gif');
+  background-size: cover;
+  color: white;
+  font-family: 'Lacquer';
+  text-align: center;
+}

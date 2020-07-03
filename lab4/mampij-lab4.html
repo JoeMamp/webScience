@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" href="/mampij-lab4.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Lacquer&display=swap" rel="stylesheet">
+    <title>Lab 4 - lyrics.ovh API</title>
+  </head>
+  <body ng-app="myApp" ng-controller="main">
+    <form action="http://localhost:3000/" method="get">
+        <fieldset>
+            <label for="artist">Artist:</label>
+            <input type="text" id="artist" name="artist" placeholder="Enter the artist's name here" />
+            <label for="song">Song Name:</label>
+            <input type="text" id="song" name="song" placeholder="Enter the song name here"></input>
+
+            <input type="submit" value="Send message" />
+        </fieldset>
+    </form>
+
+    <h1>Lyrics:</h1>
+    <h3 ng-show="songLyrics">{{songLyrics}}</h3>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+    <script type="text/javascript" src="mampij-lab4.js"></script>
+  </body>
+</html>
