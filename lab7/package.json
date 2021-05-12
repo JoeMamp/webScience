@@ -13,7 +13,7 @@
     "angular-chart.js": "^1.1.1",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "express": "^4.17.1",
     "generate-schema": "^2.6.0",
     "json2csv": "^5.0.0",
